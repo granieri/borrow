@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'BorrowItem', params: {id: id}}" class="item">
+  <router-link :to="{ name: 'ManageItem', params: {id: id}}" class="item">
     <div class="pic">
       <div class="itemName">
         {{nm}}
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'Item',
+  name: 'ManageItem',
   props: ['nm', 'quantity', 'id'],
   data () {
     return {
@@ -37,10 +37,10 @@ export default {
 }
 
 .itemName{
-  background: rgba(10, 58, 150, 0.7);
+  background: rgba(140, 158, 255,0.7);
+  color: #000;
   font-size: 20px;
   text-align: left;
-  color: white;
   padding-left: 5vw;
   box-sizing: border-box;
 }

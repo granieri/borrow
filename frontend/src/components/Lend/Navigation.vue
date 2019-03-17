@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'borrow',
+  name: 'Lend',
   data () {
     return {
       borrow: 'borrow',
@@ -23,6 +23,7 @@ export default {
   display: flex;
   flex-direction: column;
   background: #3949ab;
+  color: #fff;
   color: white;
 }
 

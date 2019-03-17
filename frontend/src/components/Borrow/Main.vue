@@ -23,7 +23,7 @@ import Item from './Item.vue'
 
 export default {
   components: { Item },
-  name: 'borrow',
+  name: 'Borrow',
   data () {
     return {
       categories: ['all', 'art', 'music', 'video', 'electronics'],
