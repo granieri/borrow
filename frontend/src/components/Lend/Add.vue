@@ -67,7 +67,8 @@ img {
   width: 40vw;
   border-radius: 15px;
   padding: 10px 5px;
-  margin: 10px auto 0;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 .btn:hover{

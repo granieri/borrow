@@ -5,8 +5,8 @@
     <p>{{ desc }}</p>
     <p>There are {{ quantity }} available</p>
 
-    <div class="btn">check out</div>
-    <div class="btn">return</div>
+    <button class="btn">check out</button>
+    <button class="btn">return</button>
   </div>
 </template>
 
@@ -57,12 +57,6 @@ img {
   img{
     width: 50vw;
     margin: 0 auto;
-  }
-
-  .btn {
-    max-width: 200px;
-    font-size: 15px;
-    box-sizing: border-box;
   }
 }
 </style>
