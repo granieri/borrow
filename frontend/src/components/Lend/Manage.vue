@@ -9,8 +9,6 @@
 
     <div class="items">
       <item v-for="item in items"
-            v-bind:nm="item.nm"
-            v-bind:quantity="item.quantity"
             v-bind:id="item.id"
             v-bind:key="item.key">
       </item>
@@ -28,7 +26,7 @@ export default {
     return {
       categories: ['all', 'art', 'music', 'video', 'electronics'],
       items: [
-        { nm: 'GoPro HERO', quantity: '2', id: '123' }
+        { id: '123' }
       ]
     }
   }

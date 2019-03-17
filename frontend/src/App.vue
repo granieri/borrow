@@ -44,6 +44,30 @@ body, html{
   overflow: scroll;
 }
 
+
+.hoverBtn {
+  height: 15vw;
+  width: 15vw;
+  font-size: 10vw;
+  position: fixed;
+  bottom: 5vw;
+  right: 5vw;
+  background: #093162;
+  border-radius: 100%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s;
+}
+
+.hoverBtn:hover {
+  background: #1f2e82;
+  box-shadow: 0 5px 28px rgba(0,0,0,0.25), 0 3px 10px rgba(0,0,0,0.22);
+}
+
 header {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -56,6 +80,7 @@ header {
   height: 18vh;
   width: 100vw;
   position: fixed;
+  z-index: 1;
 }
 
 h1 {
@@ -72,8 +97,30 @@ h1 {
 
 /* link reset */
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
 }
 
+/* table reset */
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+@media only screen and (min-device-width : 768px){
+  .hoverBtn {
+    min-width: 50px;
+    min-height: 50px;
+    width: 4vw;
+    height: 4vw;
+    font-size: 3vw;
+    bottom: 2vw;
+    right: 2vw;
+  }
+}
 </style>

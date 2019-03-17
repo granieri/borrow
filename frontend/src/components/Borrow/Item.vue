@@ -14,9 +14,12 @@
 <script>
 export default {
   name: 'Item',
-  props: ['nm', 'quantity', 'id'],
+  props: ['id'],
   data () {
     return {
+      nm: 'GoPro HERO',
+      description: 'this is a camera',
+      quantity: '2'
     }
   }
 }

@@ -1,19 +1,55 @@
 <template>
   <div class="content">
-    <div class="field"><label for="itemName">Item name:</label> <input id="itemName" name="itemName" type="text"></div>
-    <div class="field">
-      <label for="category" id="categoryLabel">Category:</label>
-      <select id="category">
-        <option v-for="category in categories">{{category}}</option>
-      </select>
-    </div>
-    <div class="field"><label for="itemPic">Photo:</label> <input type="file" id="itemPic" name="itemPic" accept="image/*"></div>
-    <label for="itemDesc">Description:</label> <textarea name="itemDesc" id="itemDesc" rows="3"></textarea>
-    <div><span id="remaining">256</span> characters remaining</div>
-    <div class="field"><label for="itemQuantity">Quantity:</label> <input id="itemQuantity" name="itemQuantity" type="number" min="0" step="1"></div>
-
-    <div class="field"><label for="itemRentalPeriod">Rental period:</label> <input id="itemRentalPeriod" name="itemRentalPeriod" type="number" min="1" step="1"> hours</div>
-
+    <table>
+      <tr>
+        <td>
+          <label for="itemName">Item name:</label>
+        </td>
+        <td>
+          <input id="itemName" name="itemName" type="text">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="category" id="categoryLabel">Category:</label>
+        </td>
+        <td>
+          <select id="category">
+            <option v-for="category in categories">{{category}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="itemPic">Photo:</label>
+        </td>
+        <td>
+          <input type="file" id="itemPic" name="itemPic" accept="image/*">
+        </td>
+      </tr>
+      <tr>
+        <td class="desc_cell" colspan="2">
+          <label for="itemDesc">Description:</label><br> <textarea name="itemDesc" id="itemDesc" rows="3"></textarea>
+          <div><span id="remaining">256</span> characters remaining</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="itemQuantity">Quantity:</label>
+        </td>
+        <td>
+          <input id="itemQuantity" name="itemQuantity" type="number" min="0" step="1">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="itemRentalPeriod">Rental period:</label>
+        </td>
+        <td>
+          <input id="itemRentalPeriod" name="itemRentalPeriod" type="number" min="1" step="1"> hours
+        </td>
+      </tr>
+    </table>
     <button class="btn">add item</button>
   </div>
 </template>
@@ -44,7 +80,8 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  background: #8c9eff;
+  background: #3949ab;
+  color: #fff;
   font-size: 15px;
   padding: 20vh 15px 0;
 }
@@ -53,14 +90,10 @@ img {
   width: 100vw;
 }
 
-.field {
-  margin: 5px 0;
-}
-
 .btn {
   font-weight: bold;
-  background: #536dfe;
-  color: #fff;
+  background: #8c9eff;
+  color: #000;
   font-size: 18px;
   border: none;
   width: 40vw;
@@ -75,6 +108,28 @@ img {
 
 #itemQuantity, #itemRentalPeriod {
   width: 5vw;
+}
+
+#itemDesc {
+  width: 80%;
+}
+
+td {
+  padding: 5px 3px;
+}
+
+td:nth-child(1){
+  width: 100%;
+  text-align: right;
+  font-weight: bold;
+}
+
+td:nth-child(2) {
+  text-align: left;
+}
+
+td.desc_cell {
+  text-align: center;
 }
 
 @media only screen and (min-device-width : 768px){
