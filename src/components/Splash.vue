@@ -1,17 +1,17 @@
 <template>
   <div class="nav">
-    <div class="opt">
-      <div>{{ borrow }}</div>
-    </div>
-    <div class="opt">
-      <div>{{ lend }}</div>
-    </div>
+    <router-link to="/borrow" class="opt">
+      <div v-once>{{ borrow }}</div>
+    </router-link>
+    <router-link to="/lend" class="opt">
+      <div v-once>{{ lend }}</div>
+    </router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'borrow',
+  name: 'splash',
   data () {
     return {
       borrow: 'borrow',
@@ -45,8 +45,8 @@ export default {
   background: #8c9eff;
 }
 
-.opt:nth-child(1):hover{
-  background: #8c9eff;
+.opt:nth-child(1):hover,.opt:nth-child(1):active{
+  background: #5568d1;
 }
 
 
@@ -54,8 +54,8 @@ export default {
   background: #3949ab;
 }
 
-.opt:nth-child(2):hover{
-  background: #3949ab;
+.opt:nth-child(2):hover,.opt:nth-child(2):active{
+  background: #4c58a5;
 }
 
 
