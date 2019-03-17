@@ -1,0 +1,129 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "lion borrow",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "hello",
+                        "how are you",
+                        "say hi world",
+                        "say hi",
+                        "hi",
+                        "say hello world",
+                        "say hello"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "BorrowIntent",
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "borrowItems",
+                            "samples": [
+                                "I'd like to borrow an {item}",
+                                "I'd like to borrow a {item}",
+                                "an {item}",
+                                "a {item}",
+                                "I'd like to borrow the {item} .",
+                                "the {item}"
+                            ]
+                        },
+                        {
+                            "name": "quantity",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "Can I borrow {quantity} {item}",
+                        "Can I borrow an {item}",
+                        "I'd like to borrow an {item}",
+                        "I'd like to borrow the {item}",
+                        "I'd like to borrow a {item}",
+                        "Can I borrow the {item}",
+                        "Can I borrow a {item} "
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "borrowItems",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "GoPro"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "BorrowIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "borrowItems",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.1539824893103.399421163714",
+                                "elicitation": "Elicit.Slot.1539824893103.399421163714"
+                            }
+                        },
+                        {
+                            "name": "quantity",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1539824893103.399421163714",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What would you like to borrow?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.1539824893103.399421163714",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "I heard {item} , is that correct?"
+                    }
+                ]
+            }
+        ]
+    }
+}
