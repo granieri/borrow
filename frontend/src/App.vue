@@ -128,6 +128,7 @@ h1 {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+  color: #000;
 }
 
 .modal-content .btn {

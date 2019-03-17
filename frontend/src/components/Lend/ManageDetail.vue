@@ -51,8 +51,32 @@
       </tr>
     </table>
 
-    <div class="btn">update</div>
-    <div class="btn delete">delete</div>
+    <div class="btn" id="update">update</div>
+    <div class="btn btn-delete" id="delete">delete</div>
+
+    <!-- Update modal -->
+    <div id="updateModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        Are you sure you want to update?
+        <div class="btn confirm">confirm</div>
+      </div>
+
+    </div>
+
+    <!-- Delete modal -->
+    <div id="deleteModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        Are you sure you want to delete this record? This action cannot be undone.
+        <div class="btn confirm btn-delete">confirm</div>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -79,6 +103,40 @@ export default {
       if (cur_len < 20) remaining.style.color = 'red'
       else remaining.style.color = 'black'
     })
+
+    let updateModal = document.getElementById('updateModal')
+    let deleteModal = document.getElementById('deleteModal')
+    console.log(deleteModal)
+
+    var updateBtn = document.getElementById("update")
+    var deleteBtn = document.getElementById("delete")
+
+    var closeUpdate = document.getElementsByClassName("close")[0]
+    var closeDelete = document.getElementsByClassName("close")[1]
+
+    updateBtn.onclick = function() {
+      updateModal.style.display = "block"
+    }
+
+    deleteBtn.onclick = function() {
+      deleteModal.style.display = "block"
+    }
+
+    // When the user clicks on (x), close the modal
+    closeUpdate.onclick = function() {
+      updateModal.style.display = "none"
+    }
+    closeDelete.onclick = function() {
+      deleteModal.style.display = "none"
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target.className == "modal") {
+        updateModal.style.display = "none"
+        deleteModal.style.display = "none"
+      }
+    }
   }
 }
 </script>
@@ -101,8 +159,12 @@ img {
   margin: 5px 0;
 }
 
-.delete {
+.btn-delete {
   background: red;
+}
+
+.confirm {
+  margin-top: 40px;
 }
 
 #itemQuantity, #itemRentalPeriod {
