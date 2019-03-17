@@ -27,7 +27,7 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   flex: 1;
-  padding-top: 18vh;
+  padding-top: 12vh;
 }
 
 .opt {

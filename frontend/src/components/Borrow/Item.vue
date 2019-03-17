@@ -49,10 +49,10 @@ export default {
 }
 
 .quantity{
-  background: #31415b;
+  background: #e8e8e8;
+  color: #000;
   font-size: 15px;
   text-align: right;
-  color: white;
   padding-right: 5vw;
   box-sizing: border-box;
 }
