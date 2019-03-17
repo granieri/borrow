@@ -37,7 +37,7 @@
                     "slots": [
                         {
                             "name": "item",
-                            "type": "borrowItems",
+                            "type": "ITEMS",
                             "samples": [
                                 "I'd like to borrow an {item}",
                                 "I'd like to borrow a {item}",
@@ -61,12 +61,243 @@
                         "Can I borrow the {item}",
                         "Can I borrow a {item} "
                     ]
+                },
+                {
+                    "name": "ReturnIntent",
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "ITEMS",
+                            "samples": [
+                                "I'd like to return an {item}",
+                                "I'd like to return a {item}",
+                                "a {item}",
+                                "an {item}",
+                                "{item}",
+                                "I'd like to return the {item}"
+                            ]
+                        },
+                        {
+                            "name": "quantity",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "I am returning a {item}",
+                        "I'm returning a {item}",
+                        "I am returning the {item} .",
+                        "I am returning {quantity} {item}",
+                        "I brought back the {quantity} {item}",
+                        "I'm returning {quantity} {item}",
+                        "I brought back the {item}",
+                        "I'm returning the {item} ."
+                    ]
+                },
+                {
+                    "name": "IdentificationIntent",
+                    "slots": [],
+                    "samples": []
                 }
             ],
             "types": [
                 {
                     "name": "borrowItems",
                     "values": [
+                        {
+                            "name": {
+                                "value": "GoPro"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ITEMS",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Mallet"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Drill"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pack of Wrenches",
+                                "synonyms": [
+                                    "Wrenches",
+                                    "Some Wrenches",
+                                    "Wrench"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pack of Screwdrivers",
+                                "synonyms": [
+                                    "Screwdrivers",
+                                    "Some Screwdrivers",
+                                    "Screwdriver"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Bottle of Glue",
+                                "synonyms": [
+                                    "Glue",
+                                    "Some Glue"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Roll of Tape",
+                                "synonyms": [
+                                    "Tape"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Clamp",
+                                "synonyms": [
+                                    "Clamps"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pliers"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Hammer",
+                                "synonyms": [
+                                    "Hammers"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pack of Batteries",
+                                "synonyms": [
+                                    "Batteries",
+                                    "Battery",
+                                    "Some Batteries"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Little Bits"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Chromecast"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Vice",
+                                "synonyms": [
+                                    "Vice Grips",
+                                    "Vices",
+                                    "Vice Grip"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Flash Drive",
+                                "synonyms": [
+                                    "Zips",
+                                    "Zip Drives",
+                                    "Flash Drives",
+                                    "Zip",
+                                    "Zip Drive"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Scarlet Solo",
+                                "synonyms": [
+                                    "Audio Interface"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "USB Extension Chord",
+                                "synonyms": [
+                                    "USB Chord"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Aux Chord",
+                                "synonyms": [
+                                    "Audio Chord"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "GoPro Tripod",
+                                "synonyms": [
+                                    "Tripod"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Dremel 4000",
+                                "synonyms": [
+                                    "Dremel four thousands",
+                                    "Dremels",
+                                    "Dremel"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Shower Curtain",
+                                "synonyms": [
+                                    "Shower Curtains"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pair of Drum Sticks"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Expo Earaser"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pack of Pens"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pack of Markers"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Video Camera"
+                            }
+                        },
                         {
                             "name": {
                                 "value": "GoPro"
@@ -85,13 +316,48 @@
                     "slots": [
                         {
                             "name": "item",
-                            "type": "borrowItems",
+                            "type": "ITEMS",
                             "confirmationRequired": true,
                             "elicitationRequired": true,
                             "prompts": {
                                 "confirmation": "Confirm.Slot.1539824893103.399421163714",
                                 "elicitation": "Elicit.Slot.1539824893103.399421163714"
-                            }
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1308134256551.552867299246.1160947940616"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "quantity",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "ReturnIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "item",
+                            "type": "ITEMS",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1447592633580.1259924160568"
+                            },
+                            "validations": [
+                                {
+                                    "type": "hasEntityResolutionMatch",
+                                    "prompt": "Slot.Validation.1447592633580.1259924160568.901993846870"
+                                }
+                            ]
                         },
                         {
                             "name": "quantity",
@@ -121,6 +387,33 @@
                     {
                         "type": "PlainText",
                         "value": "I heard {item} , is that correct?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1447592633580.1259924160568.901993846870",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Sorry, I don't lnow what that is. Can you try a different name or say that again?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1447592633580.1259924160568",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What would you like to return?"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1308134256551.552867299246.1160947940616",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Sorry, I don't lnow what that is. Can you try a different name or say that again?"
                     }
                 ]
             }
