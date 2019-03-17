@@ -95,7 +95,6 @@ export default {
     let addBtn = document.getElementById('add')
 
     addBtn.addEventListener('click', () => {
-      console.log('in click handler')
       axios.post('http://lions-share-234722.appspot.com/insertitem', {
         active_flag: 1,
         owner_id: '234',
@@ -108,9 +107,11 @@ export default {
       })
       .then((response) => {
         console.log(response)
+        window.location.reload()
       })
       .catch((error) => {
         console.log(error)
+        window.location.reload()
       })
     })
   },

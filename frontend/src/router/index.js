@@ -10,13 +10,13 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'splash',
+    //   component: Splash
+    // },
     {
       path: '/',
-      name: 'splash',
-      component: Splash
-    },
-    {
-      path: '/borrow',
       name: 'borrow',
       component: Borrow
     },

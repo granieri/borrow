@@ -11,11 +11,11 @@
       <div id="return" v-bind:class="{btn: true, hide: !quantityCheckedOut}">return</div>
     </div>
 
-    <p>
+    <p v-if="desc">
       <strong>About this item:</strong> {{ desc }}
     </p>
 
-    <p><strong>Contact:</strong><br> No user has claimed this item <span class="btn adopt-btn" id="adopt">adopt</span></p>
+    <p><strong>Contact:</strong><br> <span class="adopt_text">No user has claimed this item</span> <span class="btn adopt-btn" id="adopt">adopt</span></p>
 
     <h2>Borrowers</h2>
 
@@ -116,6 +116,13 @@ export default {
       this.picture = data.picture
     })
 
+    axios.post('http://lions-share-234722.appspot.com/listusersborrowing', {
+      id: this.id
+    }).then((res) => {
+      borrowing = res.data
+      console.log(borrowing)
+    })
+
     let checkoutConfirm = document.getElementById('checkout-confirm')
     let returnConfirm = document.getElementById('return-confirm')
 
@@ -145,16 +152,31 @@ export default {
     }
 
     // confirm actions
-    checkoutConfirm.onclick = function() {
-      axios.post('http://lions-share-234722.appspot.com/insertborrowhistory',
+    checkoutConfirm.onclick = () => {
+      axios.post('http://lions-share-234722.appspot.com/insertborrowerhistory',
         {
           borrower_id: '123',
           item_id: this.id,
           time_out: Date.now(),
           quantity: (this.quantityAvailable - this.checkoutNumber)
-        }).then((res) => console.log(res))
+        }).then((res) => {
+          console.log(res)
+          this.$forceUpdate()
+          axios.post('http://lions-share-234722.appspot.com/getitembyid', {
+            id: this.id
+          }).then((r) => {
+            let data = res.data[0]
+            this.nm = data.name
+            this.desc = data.description
+            this.quantityAvailable = parseInt(data.quantity_available)
+            this.quantityTotal = parseInt(data.total_quantity) || this.quantityAvailable
+            this.quantityCheckedOut = parseInt(this.quantityTotal - this.quantityAvailable)
+            this.picture = data.picture
+            window.location.reload()
+          })
+        })
     }
-    returnConfirm.onclick = function() {
+    returnConfirm.onclick = () => {
       axios.post('http://lions-share-234722.appspot.com/updateborrowhistory',
         {
           borrower_id: '123',
@@ -162,7 +184,40 @@ export default {
           time_in: Date.now(),
           limit: this.returnNumber,
           quantity: (this.quantityAvailable + this.returnNumber)
-        }).then((res) => console.log(res))
+        }).then((res) => {
+          console.log(res)
+          axios.post('http://lions-share-234722.appspot.com/getitembyid', {
+            id: this.id
+          }).then((r) => {
+            let data = res.data[0]
+            this.nm = data.name
+            this.desc = data.description
+            this.quantityAvailable = parseInt(data.quantity_available)
+            this.quantityTotal = parseInt(data.total_quantity) || this.quantityAvailable
+            this.quantityCheckedOut = parseInt(this.quantityTotal - this.quantityAvailable)
+            this.picture = data.picture
+            window.location.reload()
+          })
+        })
+
+      let adoptButton = document.getElementById('adopt')
+      if(this.contact_id == '123') adoptButton.innerHTML = 'adopt'
+      else adoptButton.innerHTML = 'release'
+      adoptButton.onclick = () => {
+        axios.post('http://lions-share-234722.appspot.com/updateitem', {
+          active_flag: 1,
+          contact_id: (this.contact_id == '123') ? '123' : null,
+          rental_period: this.rentalPeriod,
+          total_quantity: this.quantity,
+          name: this.nm,
+          description: this.desc,
+          item_id: this.id
+        })
+        .then((response) => {
+          console.log(response)
+          window.location.reload()
+        })
+      }
     }
 
     // When the user clicks anywhere outside of the modal, close it

@@ -51,7 +51,7 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         Are you sure you want to update?
-        <div class="btn confirm">confirm</div>
+        <div class="btn confirm" id="update-confirm">confirm</div>
       </div>
 
     </div>
@@ -63,7 +63,7 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         Are you sure you want to delete this record? This action cannot be undone.
-        <div class="btn confirm btn-delete">confirm</div>
+        <div class="btn confirm btn-delete" id="delete-confirm">confirm</div>
       </div>
 
     </div>
@@ -99,6 +99,7 @@ export default {
       this.quantityAvailable = parseInt(data.quantity_available)
       this.quantityTotal = parseInt(data.total_quantity) || this.quantityAvailable
       this.picture = data.picture
+      this.contact_id = data.contact_id
     })
 
     let desc = document.getElementById('itemDesc')
@@ -110,6 +111,9 @@ export default {
       if (cur_len < 20) remaining.style.color = 'red'
       else remaining.style.color = 'black'
     })
+
+    let updateConfirm = document.getElementById('update-confirm')
+    let deleteConfirm = document.getElementById('delete-confirm')
 
     let updateModal = document.getElementById('updateModal')
     let deleteModal = document.getElementById('deleteModal')
@@ -134,6 +138,46 @@ export default {
     }
     closeDelete.onclick = function() {
       deleteModal.style.display = "none"
+    }
+
+    updateConfirm.onclick = () => {
+      axios.post('http://lions-share-234722.appspot.com/updateitem', {
+        active_flag: 1,
+        contact_id: this.contact_id,
+        rental_period: this.rentalPeriod,
+        total_quantity: this.quantity,
+        name: this.nm,
+        description: this.desc,
+        item_id: this.id
+      })
+      .then((response) => {
+        console.log(response)
+        this.$router.push({ path: `borrow/item/${id}` })
+      })
+      .catch((error) => {
+        console.log(error)
+        this.$router.push({ path: `borrow/item/${id}` })
+      })
+    }
+
+    deleteConfirm.onclick = () => {
+      axios.post('http://lions-share-234722.appspot.com/updateitem', {
+        active_flag: 0,
+        contact_id: this.contact_id,
+        rental_period: this.rentalPeriod,
+        total_quantity: this.quantityTotal,
+        name: this.nm,
+        description: this.desc,
+        item_id: this.id
+      })
+      .then((response) => {
+        console.log(response)
+        window.location.reload()
+      })
+      .catch((error) => {
+        console.log(error)
+        window.location.reload()
+      })
     }
 
     // When the user clicks anywhere outside of the modal, close it
