@@ -22,7 +22,6 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  flex: 1;
   background: #3949ab;
   color: white;
 }

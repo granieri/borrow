@@ -5,8 +5,8 @@
     <p>{{ desc }}</p>
     <p>There are {{ quantity }} available</p>
 
-    <button class="btn">check out</button>
-    <button class="btn">return</button>
+    <div class="btn">check out</div>
+    <div class="btn">return</div>
   </div>
 </template>
 
@@ -28,7 +28,6 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  flex: 1;
   background: #8c9eff;
   font-size: 15px;
 }
@@ -57,6 +56,12 @@ img {
   img{
     width: 50vw;
     margin: 0 auto;
+  }
+
+  .btn {
+    max-width: 200px;
+    font-size: 15px;
+    box-sizing: border-box;
   }
 }
 </style>

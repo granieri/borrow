@@ -38,6 +38,12 @@ body, html{
   height: 100vh;
 }
 
+.content {
+  padding-top: 18vh;
+  height: 100vh;
+  overflow: scroll;
+}
+
 header {
   font-family: 'Playfair Display', serif;
   font-weight: 900;
@@ -47,6 +53,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 18vh;
+  width: 100vw;
+  position: fixed;
 }
 
 h1 {

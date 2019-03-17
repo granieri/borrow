@@ -27,6 +27,7 @@ export default {
   flex-direction: column;
   justify-content: space-around;
   flex: 1;
+  padding-top: 18vh;
 }
 
 .opt {
@@ -66,8 +67,5 @@ ul {
 li {
   display: inline-block;
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 </style>

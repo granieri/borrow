@@ -44,10 +44,9 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  flex: 1;
   background: #8c9eff;
   font-size: 15px;
-  padding: 15px;
+  padding: 20vh 15px 0;
 }
 
 img {
@@ -67,8 +66,7 @@ img {
   width: 40vw;
   border-radius: 15px;
   padding: 10px 5px;
-  margin: 0 auto;
-  margin-top: 10px;
+  margin: 10px auto 0;
 }
 
 .btn:hover{

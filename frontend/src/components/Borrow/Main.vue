@@ -39,7 +39,6 @@ export default {
 .content {
   display: flex;
   flex-direction: column;
-  flex: 1;
   background: #8c9eff;
   font-size: 15px;
 }
