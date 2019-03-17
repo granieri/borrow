@@ -51,8 +51,8 @@
       </tr>
     </table>
 
-    <button class="btn">update</button>
-    <button class="btn delete">delete</button>
+    <div class="btn">update</div>
+    <div class="btn delete">delete</div>
   </div>
 </template>
 
@@ -99,22 +99,6 @@ img {
 
 .field {
   margin: 5px 0;
-}
-
-.btn {
-  font-weight: bold;
-  background: #536dfe;
-  color: #fff;
-  font-size: 18px;
-  border: none;
-  width: 40vw;
-  border-radius: 15px;
-  padding: 10px 5px;
-  margin: 10px auto 0;
-}
-
-.btn:hover{
-  background: #7986cb;
 }
 
 .delete {

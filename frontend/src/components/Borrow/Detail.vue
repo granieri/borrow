@@ -30,7 +30,7 @@
 
     </div>
 
-    <!-- Checkout modal -->
+    <!-- Return modal -->
     <div id="returnModal" class="modal">
 
       <!-- Modal content -->
@@ -79,7 +79,7 @@ export default {
       returnModal.style.display = "block"
     }
 
-    // When the user clicks on <span> (x), close the modal
+    // When the user clicks on (x), close the modal
     closeCheckout.onclick = function() {
       checkoutModal.style.display = "none"
     }
@@ -144,16 +144,8 @@ img {
 }
 
 .btn {
-  font-weight: bold;
   background: #536dfe;
   color: #fff;
-  font-size: 15px;
-  border: none;
-  border-radius: 15px;
-  padding: 10px 0;
-  width: 30vw;
-  min-width: 100px;
-  margin: 0 auto;
 }
 
 .btn:hover{
@@ -162,48 +154,6 @@ img {
 
 .confirm {
   margin-top: 40px;
-}
-
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: 30vh auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-.modal-content .btn {
-  width: 40%;
-}
-
-.close {
-  color: red;
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 @media only screen and (min-device-width : 768px){

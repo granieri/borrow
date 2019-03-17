@@ -63,6 +63,26 @@ body, html{
   transition: all 0.3s;
 }
 
+.btn {
+  font-weight: bold;
+  background: #8c9eff;
+  color: #000;
+  font-size: 18px;
+  border: none;
+  width: 30vw;
+  border-radius: 2px;
+  padding: 10px 5px;
+  margin: 10px auto 0;
+  min-width: 100px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.24);
+}
+
+.btn:hover{
+  background: #7986cb;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.12), 0 1px 5px rgba(0,0,0,0.24);
+  transition: all 0.3s;
+}
+
 .hoverBtn:hover {
   background: #1f2e82;
   box-shadow: 0 5px 28px rgba(0,0,0,0.25), 0 3px 10px rgba(0,0,0,0.22);
@@ -86,6 +106,48 @@ header {
 h1 {
   margin: 0;
   padding: 5px 0;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 30vh auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.modal-content .btn {
+  width: 40%;
+}
+
+.close {
+  color: red;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .icon {

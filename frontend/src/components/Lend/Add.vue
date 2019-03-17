@@ -98,22 +98,6 @@ img {
   width: 100vw;
 }
 
-.btn {
-  font-weight: bold;
-  background: #8c9eff;
-  color: #000;
-  font-size: 18px;
-  border: none;
-  width: 40vw;
-  border-radius: 15px;
-  padding: 10px 5px;
-  margin: 10px auto 0;
-}
-
-.btn:hover{
-  background: #7986cb;
-}
-
 #itemQuantity, #itemRentalPeriod {
   width: 5vw;
 }
