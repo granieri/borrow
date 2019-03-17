@@ -152,11 +152,11 @@ export default {
       })
       .then((response) => {
         console.log(response)
-        this.$router.push({ path: `borrow/item/${id}` })
+        this.$router.push({ path: `borrow/item/${this.id}` })
       })
       .catch((error) => {
         console.log(error)
-        this.$router.push({ path: `borrow/item/${id}` })
+        this.$router.push({ path: `borrow/item/${this.id}` })
       })
     }
 

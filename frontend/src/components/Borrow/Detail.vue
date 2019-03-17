@@ -17,9 +17,9 @@
 
     <p><strong>Contact:</strong><br> <span class="adopt_text">No user has claimed this item</span> <span class="btn adopt-btn" id="adopt">adopt</span></p>
 
-    <h2>Borrowers</h2>
+    <!-- <h2>Borrowers</h2>
 
-    <table class="borrowTable"> <!-- v-if borrowers > 0 -->
+    <table class="borrowTable" v-if="borrowing > 0">
       <thead>
         <td>
           User
@@ -34,9 +34,9 @@
           Time&nbsp;left
         </td>
       </thead>
-      <tr>
+      <tr v-for="borrower in borrowing">
         <td>
-          Username
+          borrowing.user_id
         </td>
         <td>
           3
@@ -49,7 +49,7 @@
         </td>
       </tr>
     </table>
-    <!-- <p v-else>No borrowers at this time.</p> -->
+    <p v-else>No borrowers at this time.</p> -->
 
     <!-- Checkout modal -->
     <div id="checkoutModal" class="modal">
@@ -81,7 +81,7 @@
 
     </div>
 
-    <router-link :to='{name: "ManageItem", params: {id: id}}' class="hoverBtn"><span>&#9998;</span></router-link>
+    <router-link :to='{name: "ManageItem", params: {id: this.id}}' class="hoverBtn"><span>&#9998;</span></router-link>
   </div>
 </template>
 
@@ -100,7 +100,8 @@ export default {
       quantityTotal: '',
       picture: '',
       checkoutNumber: 1,
-      returnNumber: 1
+      returnNumber: 1,
+      borrowing: []
     }
   },
   mounted() {
@@ -114,13 +115,6 @@ export default {
       this.quantityTotal = parseInt(data.total_quantity) || this.quantityAvailable
       this.quantityCheckedOut = parseInt(this.quantityTotal - this.quantityAvailable)
       this.picture = data.picture
-    })
-
-    axios.post('http://lions-share-234722.appspot.com/listusersborrowing', {
-      id: this.id
-    }).then((res) => {
-      borrowing = res.data
-      console.log(borrowing)
     })
 
     let checkoutConfirm = document.getElementById('checkout-confirm')
