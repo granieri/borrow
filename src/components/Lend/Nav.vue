@@ -1,8 +1,8 @@
 <template>
   <div class="content">
-    <router-link to="/track" class="opt">track</router-link>
-    <router-link to="/add" class="opt">add</router-link>
-    <router-link to="/mgmt" class="opt">manage</router-link>
+    <router-link to="lend/track" class="opt">track</router-link>
+    <router-link to="lend/add" class="opt">add</router-link>
+    <router-link to="lend/mgmt" class="opt">manage</router-link>
   </div>
 </template>
 

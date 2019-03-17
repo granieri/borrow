@@ -4,7 +4,9 @@ import Splash from '@/components/Splash'
 import Borrow from '@/components/Borrow/Main'
 import Lend from '@/components/Lend/Nav'
 import BorrowItem from '@/components/Borrow/Detail'
-
+import LendAdd from '@/components/Lend/Add'
+import LendTrack from '@/components/Lend/Track'
+import LendManage from '@/components/Lend/Manage'
 
 Vue.use(Router)
 
@@ -29,6 +31,21 @@ export default new Router({
       path: '/lend',
       name: 'Lend',
       component: Lend
+    },
+    {
+      path: '/lend/add',
+      name: 'LendAdd',
+      component: LendAdd
+    },
+    {
+      path: '/lend/track',
+      name: 'LendTrack',
+      component: LendTrack
+    },
+    {
+      path: '/lend/manage',
+      name: 'LendManage',
+      component: LendManage
     }
   ]
 })

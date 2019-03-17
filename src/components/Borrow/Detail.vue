@@ -4,7 +4,9 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Goprohero5actioncamerapoweredon.jpg/1024px-Goprohero5actioncamerapoweredon.jpg">
     <p>{{ desc }}</p>
     <p>There are {{ quantity }} available</p>
-    <button class="checkout">check out</button>
+
+    <button class="btn">check out</button>
+    <button class="btn">return</button>
   </div>
 </template>
 
@@ -35,7 +37,7 @@ img {
   width: 100vw;
 }
 
-.checkout {
+.btn {
   font-weight: bold;
   background: #536dfe;
   color: #fff;
@@ -44,10 +46,17 @@ img {
   width: 40vw;
   border-radius: 15px;
   padding: 10px 5px;
-  margin: 0 auto;
+  margin: 10px auto;
 }
 
-.checkout:hover{
+.btn:hover{
   background: #7986cb;
+}
+
+@media only screen and (min-device-width : 768px){
+  img{
+    width: 50vw;
+    margin: 0 auto;
+  }
 }
 </style>
