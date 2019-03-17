@@ -39,7 +39,7 @@ body, html{
 }
 
 .content {
-  padding-top: 14vh;
+  padding-top: 12vh;
   height: 100vh;
   overflow: scroll;
 }
@@ -97,7 +97,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 14vh;
+  height: 12vh;
   width: 100vw;
   position: fixed;
   z-index: 1;

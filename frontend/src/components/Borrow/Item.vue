@@ -14,12 +14,17 @@
 <script>
 export default {
   name: 'Item',
-  props: ['id'],
+  props: ['id', 'quantity', 'nm', 'pic'],
   data () {
     return {
-      nm: 'GoPro HERO',
-      description: 'this is a camera',
-      quantity: '2'
+    }
+  },
+  mounted() {
+    let thisComponent = this.$el
+    if(this.pic){
+      thisComponent.children[0].style.backgroundImage = 'url("' + this.pic + '")'
+    } else {
+      thisComponent.children[0].style.display = none
     }
   }
 }
@@ -30,10 +35,12 @@ export default {
   height: 50vw;
   width: 100vw;
   display: block;
+  margin-bottom: 40px;
+  box-shadow: 0 25px 10px rgba(0,0,0,0.12);
 }
 
 .pic{
-  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Goprohero5actioncamerapoweredon.jpg/1024px-Goprohero5actioncamerapoweredon.jpg');
+
   background-size: cover;
   height: 100%;
   width: 100%;

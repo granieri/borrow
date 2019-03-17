@@ -2,21 +2,20 @@
   <div class="content">
     <div class="pic">
       <h2>{{ nm }}</h2>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Goprohero5actioncamerapoweredon.jpg/1024px-Goprohero5actioncamerapoweredon.jpg">
+      <img :src="picture">
       <div class="availability">{{ quantityAvailable }}/{{ quantityTotal }} available &bullet; you have {{ quantityCheckedOut }}</div>
     </div>
 
     <div class="btnRow">
       <div class="btn" id="checkout">check out</div>
-      <div class="btn" id="return">return</div>
+      <div id="return" v-bind:class="{btn: true, hide: !quantityCheckedOut}">return</div>
     </div>
 
     <p>
       <strong>About this item:</strong> {{ desc }}
     </p>
 
-    <p><strong>Adoption info:</strong> No user has claimed this item</p>
-    <div class="btn adopt-btn" id="adopt">adopt</div>
+    <p><strong>Contact:</strong><br> No user has claimed this item <span class="btn adopt-btn" id="adopt">adopt</span></p>
 
     <h2>Borrowers</h2>
 
@@ -60,9 +59,9 @@
         <span class="close">&times;</span>
         Checkout how many?
         <select id="checkoutQuantity">
-          <option v-for="n in quantityAvailable" :key="n">{{n}}</option>
+          <option v-for="n in quantityAvailable" :key="n" v-model="checkoutNumber">{{n}}</option>
         </select>
-        <div class="btn confirm">confirm</div>
+        <div class="btn confirm" id="checkout-confirm">confirm</div>
       </div>
 
     </div>
@@ -75,9 +74,9 @@
         <span class="close">&times;</span>
         Return how many?
         <select id="checkoutQuantity">
-          <option v-for="n in quantityCheckedOut" :key="n">{{n}}</option>
+          <option v-for="n in quantityCheckedOut" :key="n" v-model="returnNumber">{{n}}</option>
         </select>
-        <div class="btn confirm">confirm</div>
+        <div class="btn confirm" id="return-confirm">confirm</div>
       </div>
 
     </div>
@@ -87,19 +86,39 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Detail',
   data () {
     return {
       id: this.$route.params.id,
-      nm: 'GoPro HERO',
-      desc: 'Portable, wearable, mountable HD camera',
-      quantityAvailable: parseInt('2'),
-      quantityCheckedOut: parseInt('1'),
-      quantityTotal: parseInt('3')
+      nm: '',
+      desc: '',
+      quantityAvailable: '',
+      quantityCheckedOut: '',
+      quantityTotal: '',
+      picture: '',
+      checkoutNumber: 1,
+      returnNumber: 1
     }
   },
   mounted() {
+    axios.post('http://lions-share-234722.appspot.com/getitembyid', {
+      id: this.id
+    }).then((res) => {
+      let data = res.data[0]
+      this.nm = data.name
+      this.desc = data.description
+      this.quantityAvailable = parseInt(data.quantity_available)
+      this.quantityTotal = parseInt(data.total_quantity) || this.quantityAvailable
+      this.quantityCheckedOut = parseInt(this.quantityTotal - this.quantityAvailable)
+      this.picture = data.picture
+    })
+
+    let checkoutConfirm = document.getElementById('checkout-confirm')
+    let returnConfirm = document.getElementById('return-confirm')
+
     let checkoutModal = document.getElementById('checkoutModal')
     let returnModal = document.getElementById('returnModal')
 
@@ -125,6 +144,27 @@ export default {
       returnModal.style.display = "none"
     }
 
+    // confirm actions
+    checkoutConfirm.onclick = function() {
+      axios.post('http://lions-share-234722.appspot.com/insertborrowhistory',
+        {
+          borrower_id: '123',
+          item_id: this.id,
+          time_out: Date.now(),
+          quantity: (this.quantityAvailable - this.checkoutNumber)
+        }).then((res) => console.log(res))
+    }
+    returnConfirm.onclick = function() {
+      axios.post('http://lions-share-234722.appspot.com/updateborrowhistory',
+        {
+          borrower_id: '123',
+          item_id: this.id,
+          time_in: Date.now(),
+          limit: this.returnNumber,
+          quantity: (this.quantityAvailable + this.returnNumber)
+        }).then((res) => console.log(res))
+    }
+
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
       if (event.target.className == "modal") {
@@ -148,6 +188,10 @@ export default {
 .content > h2 {
   text-align: left;
   padding: 5px;
+}
+
+.hide {
+  display: none !important;
 }
 
 .pic {
@@ -214,9 +258,12 @@ img {
 }
 
 .adopt-btn{
-  width: 15vw;
-  padding: 5px 0;
+  width: auto;
+  min-width: 50px;
+  padding: 2px 5px;
   margin: 0 auto;
+  display: inline-block;
+  background: #7986cb;
 }
 
 .confirm {

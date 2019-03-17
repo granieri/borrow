@@ -10,18 +10,8 @@
         </td>
       </tr>
       <tr>
-        <td>
-          <label for="category" id="categoryLabel">Category:</label>
-        </td>
-        <td>
-          <select id="category">
-            <option v-for="category in categories">{{category}}</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
         <td class="desc_cell" colspan="2">
-          <label for="itemDesc">Description:</label><br> <textarea name="itemDesc" id="itemDesc" rows="3"></textarea>
+          <label for="itemDesc">Description:</label><br> <textarea name="itemDesc" id="itemDesc" rows="3" v-model="desc"></textarea>
           <div><span id="remaining">256</span> characters remaining</div>
         </td>
       </tr>
@@ -30,7 +20,7 @@
           <label for="itemQuantity">Quantity:</label>
         </td>
         <td>
-          <input id="itemQuantity" name="itemQuantity" type="number" min="0" step="1">
+          <input id="itemQuantity" name="itemQuantity" type="number" min="0" step="1" v-model="quantityAvailable">
         </td>
       </tr>
       <tr>
@@ -38,7 +28,7 @@
           <label for="itemRentalPeriod">Rental period:</label>
         </td>
         <td>
-          <input id="itemRentalPeriod" name="itemRentalPeriod" type="number" min="1" step="1"> hours
+          <input id="itemRentalPeriod" name="itemRentalPeriod" type="number" min="1" step="1" v-model="rentalPeriod"> hours
         </td>
       </tr>
       <tr>
@@ -46,7 +36,7 @@
           <label for="itemActive">Active:</label>
         </td>
         <td>
-          <input id="itemActive" name="itemActive" type="checkbox">
+          <input id="itemActive" name="itemActive" type="checkbox" v-model="active">
         </td>
       </tr>
     </table>
@@ -81,19 +71,36 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'LendAdd',
   data () {
     return {
-      categories: ['art', 'music', 'video', 'electronics'],
       id: this.$route.params.id,
-      nm: 'GoPro HERO',
-      desc: 'Portable, wearable, mountable HD camera',
-      quantityAvailable: parseInt('2'),
-      quantityCheckedOut: parseInt('1')
+      nm: '',
+      desc: '',
+      quantityAvailable: '',
+      quantityTotal: '',
+      picture: '',
+      active: '',
+      rentalPeriod: '',
     }
   },
   mounted() {
+    axios.post('http://lions-share-234722.appspot.com/getitembyid', {
+      id: this.id
+    }).then((res) => {
+      let data = res.data[0]
+      this.nm = data.name
+      this.active = data.active_flag
+      this.desc = data.description
+      this.rentalPeriod = data.rental_period
+      this.quantityAvailable = parseInt(data.quantity_available)
+      this.quantityTotal = parseInt(data.total_quantity) || this.quantityAvailable
+      this.picture = data.picture
+    })
+
     let desc = document.getElementById('itemDesc')
     let remaining = document.getElementById('remaining')
     let max = 256
@@ -106,7 +113,6 @@ export default {
 
     let updateModal = document.getElementById('updateModal')
     let deleteModal = document.getElementById('deleteModal')
-    console.log(deleteModal)
 
     var updateBtn = document.getElementById("update")
     var deleteBtn = document.getElementById("delete")
