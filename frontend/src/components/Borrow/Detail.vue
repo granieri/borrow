@@ -205,7 +205,7 @@ export default {
           total_quantity: this.quantity,
           name: this.nm,
           description: this.desc,
-          item_id: this.id
+          id: this.id
         })
         .then((response) => {
           console.log(response)

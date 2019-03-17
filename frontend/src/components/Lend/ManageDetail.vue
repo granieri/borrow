@@ -143,20 +143,20 @@ export default {
     updateConfirm.onclick = () => {
       axios.post('http://lions-share-234722.appspot.com/updateitem', {
         active_flag: 1,
-        contact_id: this.contact_id,
-        rental_period: this.rentalPeriod,
-        total_quantity: this.quantity,
+        contact_id: 123,
+        rental_period: this.rentalPeriod || 2,
+        total_quantity: this.quantity || 2,
         name: this.nm,
         description: this.desc,
-        item_id: this.id
+        id: this.id
       })
       .then((response) => {
         console.log(response)
-        this.$router.push({ path: `borrow/item/${this.id}` })
+        this.$router.push({ path: `/borrow/item/${this.id}` })
       })
       .catch((error) => {
         console.log(error)
-        this.$router.push({ path: `borrow/item/${this.id}` })
+        this.$router.push({ path: `/borrow/item/${this.id}` })
       })
     }
 
@@ -168,7 +168,7 @@ export default {
         total_quantity: this.quantityTotal,
         name: this.nm,
         description: this.desc,
-        item_id: this.id
+        id: this.id
       })
       .then((response) => {
         console.log(response)
