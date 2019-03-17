@@ -145,9 +145,9 @@ export default {
         active_flag: 1,
         contact_id: 123,
         rental_period: this.rentalPeriod || 2,
-        total_quantity: this.quantity || 2,
+        total_quantity: this.quantityTotal || 2,
         name: this.nm,
-        description: this.desc,
+        description: this.desc || '',
         id: this.id
       })
       .then((response) => {
