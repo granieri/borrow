@@ -3,6 +3,7 @@
     <div class="pic">
       <h2>{{ nm }}</h2>
       <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Goprohero5actioncamerapoweredon.jpg/1024px-Goprohero5actioncamerapoweredon.jpg">
+      <div class="availability">{{ quantityAvailable }}/{{ quantityTotal }} available &bullet; you have {{ quantityCheckedOut }}</div>
     </div>
 
     <div class="btnRow">
@@ -10,10 +11,46 @@
       <div class="btn" id="return">return</div>
     </div>
 
-    <p><strong>About this item:</strong> {{ desc }}</p>
+    <p>
+      <strong>About this item:</strong> {{ desc }}
+    </p>
 
     <p><strong>Adoption info:</strong> No user has claimed this item</p>
-    <div class="btn" id="adopt">adopt</div>
+    <div class="btn adopt-btn" id="adopt">adopt</div>
+
+    <h2>Borrowers</h2>
+
+    <table class="borrowTable"> <!-- v-if borrowers > 0 -->
+      <thead>
+        <td>
+          User
+        </td>
+        <td>
+          Qty
+        </td>
+        <td>
+          Time&nbsp;out
+        </td>
+        <td>
+          Time&nbsp;left
+        </td>
+      </thead>
+      <tr>
+        <td>
+          Username
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          2019-10-02 04:05:12
+        </td>
+        <td>
+          2 hours
+        </td>
+      </tr>
+    </table>
+    <!-- <p v-else>No borrowers at this time.</p> -->
 
     <!-- Checkout modal -->
     <div id="checkoutModal" class="modal">
@@ -58,7 +95,8 @@ export default {
       nm: 'GoPro HERO',
       desc: 'Portable, wearable, mountable HD camera',
       quantityAvailable: parseInt('2'),
-      quantityCheckedOut: parseInt('1')
+      quantityCheckedOut: parseInt('1'),
+      quantityTotal: parseInt('3')
     }
   },
   mounted() {
@@ -104,7 +142,12 @@ export default {
   flex-direction: column;
   background: #8c9eff;
   font-size: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 20vw;
+}
+
+.content > h2 {
+  text-align: left;
+  padding: 5px;
 }
 
 .pic {
@@ -124,12 +167,30 @@ export default {
   border-bottom-right-radius: 15px;
 }
 
+.pic .availability {
+  background: #e8e8e8;
+  position: absolute;
+  bottom: 4px;
+  right: 0;
+  padding: 2px 10px;
+  border-top-left-radius: 15px;
+}
+
 p {
   padding: 0 5px;
 }
 
 img {
   width: 100vw;
+}
+
+.borrowTable thead {
+  font-weight: bold;
+}
+
+.borrowTable td {
+  text-align: left;
+  padding: 3px;
 }
 
 .btnRow {
@@ -152,11 +213,21 @@ img {
   background: #7986cb;
 }
 
+.adopt-btn{
+  width: 15vw;
+  padding: 5px 0;
+  margin: 0 auto;
+}
+
 .confirm {
   margin-top: 40px;
 }
 
 @media only screen and (min-device-width : 768px){
+  .content{
+    padding-bottom: 6vw;
+  }
+
   .pic, img {
     width: 50vw;
     margin-left: auto;
