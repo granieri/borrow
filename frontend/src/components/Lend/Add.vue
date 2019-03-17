@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <table>
+    <table class="tableForm">
       <tr>
         <td>
           <label for="itemName">Item name:</label>
@@ -47,6 +47,14 @@
         </td>
         <td>
           <input id="itemRentalPeriod" name="itemRentalPeriod" type="number" min="1" step="1"> hours
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="itemAdopt">Adopt now:</label>
+        </td>
+        <td>
+          <input id="itemAdopt" name="itemAdopt" type="checkbox">
         </td>
       </tr>
     </table>
@@ -114,25 +122,31 @@ img {
   width: 80%;
 }
 
-td {
+.tableForm td {
   padding: 5px 3px;
 }
 
-td:nth-child(1){
+.tableForm td:nth-child(1){
   width: 100%;
   text-align: right;
   font-weight: bold;
 }
 
-td:nth-child(2) {
+.tableForm td:nth-child(2) {
   text-align: left;
 }
 
-td.desc_cell {
+.tableForm td.desc_cell {
   text-align: center;
 }
 
 @media only screen and (min-device-width : 768px){
+  .tableForm {
+    width: 80vw;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
   #itemDesc{
     width: 40vw;
     max-width:600px;

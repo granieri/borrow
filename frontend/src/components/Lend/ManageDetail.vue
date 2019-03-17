@@ -1,19 +1,55 @@
 <template>
   <div class="content">
-    <div class="field"><label for="itemName">Item name:</label> <input id="itemName" name="itemName" type="text"></div>
-    <div class="field">
-      <label for="category" id="categoryLabel">Category:</label>
-      <select id="category">
-        <option v-for="category in categories">{{category}}</option>
-      </select>
-    </div>
-    <div class="field"><label for="itemPic">Photo:</label> <input type="file" id="itemPic" name="itemPic" accept="image/*"></div>
-    <label for="itemDesc">Description:</label> <textarea name="itemDesc" id="itemDesc" rows="3"></textarea>
-    <div><span id="remaining">256</span> characters remaining</div>
-    <div class="field"><label for="itemQuantity">Quantity:</label> <input id="itemQuantity" name="itemQuantity" type="number" min="0" step="1"></div>
-
-    <div class="field"><label for="itemRentalPeriod">Rental period:</label> <input id="itemRentalPeriod" name="itemRentalPeriod" type="number" min="1" step="1"> hours</div>
-    <div class="field"><label for="itemActive">Active</label> <input id="itemActive" name="itemActive" type="checkbox"></div>
+    <table class="tableForm">
+      <tr>
+        <td>
+          <label for="itemName">Item name:</label>
+        </td>
+        <td>
+          <input id="itemName" name="itemName" type="text" v-model="nm">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="category" id="categoryLabel">Category:</label>
+        </td>
+        <td>
+          <select id="category">
+            <option v-for="category in categories">{{category}}</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="desc_cell" colspan="2">
+          <label for="itemDesc">Description:</label><br> <textarea name="itemDesc" id="itemDesc" rows="3"></textarea>
+          <div><span id="remaining">256</span> characters remaining</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="itemQuantity">Quantity:</label>
+        </td>
+        <td>
+          <input id="itemQuantity" name="itemQuantity" type="number" min="0" step="1">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="itemRentalPeriod">Rental period:</label>
+        </td>
+        <td>
+          <input id="itemRentalPeriod" name="itemRentalPeriod" type="number" min="1" step="1"> hours
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="itemActive">Active:</label>
+        </td>
+        <td>
+          <input id="itemActive" name="itemActive" type="checkbox">
+        </td>
+      </tr>
+    </table>
 
     <button class="btn">update</button>
     <button class="btn delete">delete</button>
@@ -25,7 +61,12 @@ export default {
   name: 'LendAdd',
   data () {
     return {
-      categories: ['art', 'music', 'video', 'electronics']
+      categories: ['art', 'music', 'video', 'electronics'],
+      id: this.$route.params.id,
+      nm: 'GoPro HERO',
+      desc: 'Portable, wearable, mountable HD camera',
+      quantityAvailable: parseInt('2'),
+      quantityCheckedOut: parseInt('1')
     }
   },
   mounted() {
@@ -84,6 +125,27 @@ img {
   width: 5vw;
 }
 
+#itemDesc {
+  width: 80%;
+}
+
+.tableForm td {
+  padding: 5px 3px;
+}
+
+.tableForm td:nth-child(1){
+  text-align: right;
+  font-weight: bold;
+}
+
+.tableForm td:nth-child(2) {
+  text-align: left;
+}
+
+.tableForm td.desc_cell {
+  text-align: center;
+}
+
 @media only screen and (min-device-width : 768px){
   #itemDesc{
     width: 40vw;
@@ -94,5 +156,12 @@ img {
   .btn {
     max-width: 100px;
   }
+
+  .tableForm {
+    width: 80vw;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
 }
 </style>

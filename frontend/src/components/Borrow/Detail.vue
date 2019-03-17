@@ -45,7 +45,7 @@
 
     </div>
 
-    <div class="hoverBtn"><span>&#9998;</span></div>
+    <router-link :to='{name: "ManageItem", params: {id: id}}' class="hoverBtn"><span>&#9998;</span></router-link>
   </div>
 </template>
 
@@ -54,6 +54,7 @@ export default {
   name: 'Detail',
   data () {
     return {
+      id: this.$route.params.id,
       nm: 'GoPro HERO',
       desc: 'Portable, wearable, mountable HD camera',
       quantityAvailable: parseInt('2'),
