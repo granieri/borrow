@@ -1,8 +1,8 @@
-# Borrow
+# Lion's Share
 
 An app for HackPSU that helps you lend and share
 
-## Build Setup
+## Build Setup (front end)
 
 ``` bash
 # install dependencies
